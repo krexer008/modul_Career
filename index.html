@@ -42,8 +42,8 @@
   </div>
   <main class="main">
     <div class="content__buttons">
-      <button class="button content__button">О компании</button>
-      <button class="button content__button">Вакансии</button>
+      <div class="button content__button" id="p1"><a href="#p1">О компании</a></div>
+      <div class="button content__button" id="p2"><a href="#p2">Вакансии</a></div>
     </div>
     <div class="content">
       <!-- Company info -->
@@ -366,9 +366,9 @@
           <h2 class="article__title">Наши вакансии</h2>
         </div>
         <div class="vacancy-type-select">
-          <button class="vacancy-type-select-button">Все</button>
-          <button class="vacancy-type-select-button">Техническое направление</button>
-          <button class="vacancy-type-select-button">Бэкофис и работа с клиентами</button>
+          <div class="button vacancy-type-select-button" id="All"><a href="#All">Все</a></div>
+          <div class="button vacancy-type-select-button" id="Tech"><a href="#Tech">Техническое направление</a></div>
+          <div class="button vacancy-type-select-button" id="Office"><a href="#Office">Бэкофис и работа с клиентами</a></div>
         </div>
         <div class="article__content">
           <div class="vacancies-cards">
@@ -559,6 +559,7 @@
             Йошкар-Олы. Рядом набережная с прекрасными видами, кучей кафешек, театрами, музеями и быстрой
             доступностью из любой точки города.</span>
         </article>
+        <!--
         <dialog open aria-label="Отклик на вакансию" aria-modal="true" id="myDialog">
           <div class="modal-form-content">
             <form class="custom-container career-form" action="" method="post">
@@ -630,6 +631,7 @@
             </div>
           </div>
         </dialog>
+      -->
       </section>
     </div>
   </main>

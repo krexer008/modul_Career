@@ -162,18 +162,15 @@ header .logo {
   color: rgba(0, 128, 200, 1);
   height: 100%;
   cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  transition: border-color 0.25s;
 }
 
 button:active {
   background: #0080c8;
   color: #ffffff;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  transition: border-color 0.25s;
 }
 
 .login__button {
@@ -195,6 +192,15 @@ button {
 
 .content__button:first-child {
   border-radius: 8px 0 0 8px;
+}
+
+.content__button:target {
+  background: #0080c8;
+  color: #ffffff;
+}
+
+.content__button a {
+  color: inherit;
 }
 
 .main {
@@ -320,9 +326,6 @@ button {
   align-items: center;
 }
 
-.story-card__content {
-}
-
 .right {
   text-align: right;
 }
@@ -445,7 +448,6 @@ section {
 
 .vacancy-type-select-button {
   flex-basis: auto;
-
   height: 40px;
   gap: 10px;
   padding-top: 10px;
@@ -461,12 +463,14 @@ section {
   color: #7a7b7c;
 }
 
-.vacancy-type-select-button:active,
-.vacancy-type-select-button:hover {
-  border-width: 1px;
-  background: #dceaf3;
-  border: 1px solid #0080c8;
-  color: #0080c8;
+.vacancy-type-select-button:target {
+  background: #0080c8;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.vacancy-type-select-button a {
+  color: inherit;
 }
 
 .vacancies-cards {
@@ -955,9 +959,6 @@ a {
   outline: none;
   color: #181818;
   cursor: pointer;
-}
-a:hover {
-  color: #535bf2;
 }
 
 h1 {
