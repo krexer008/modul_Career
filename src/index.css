@@ -323,6 +323,10 @@ button {
 .story-card__content {
 }
 
+.right {
+  text-align: right;
+}
+
 .story-card__title {
   font-weight: 600;
   font-size: 32px;
@@ -341,13 +345,17 @@ button {
 .game {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   padding: 20px 0;
   margin: 20px 0 0;
 }
 
+.article__title {
+  margin: auto;
+}
+
 .game-cards {
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 20px; /* Добавляем отступ между карточками */
@@ -359,8 +367,7 @@ button {
 .game-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  gap: 12px;
   width: 100%;
   padding: 30px;
   border: 1px solid #0080c8;
@@ -370,6 +377,7 @@ button {
 }
 
 .game-stage_num {
+  margin: auto;
   text-align: center;
   width: 60px;
   height: 60px;
@@ -381,6 +389,7 @@ button {
 }
 
 .game-stage_title {
+  margin-top: 8px;
   text-align: center;
   font-weight: 500;
   font-size: 24px;
@@ -393,7 +402,6 @@ button {
   font-weight: 400;
   font-size: 20px;
   line-height: 140%;
-  margin-top: 10px;
 }
 
 .welcome-card {
@@ -450,9 +458,11 @@ section {
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0%;
+  color: #7a7b7c;
 }
 
-.vacancy-type-select-button:active {
+.vacancy-type-select-button:active,
+.vacancy-type-select-button:hover {
   border-width: 1px;
   background: #dceaf3;
   border: 1px solid #0080c8;
@@ -835,13 +845,12 @@ dialog .modal-greetings-content {
   letter-spacing: 0%;
 }
 
-.greetings-title{
-font-weight: 700;
-font-size: 36px;
-line-height: 42px;
-letter-spacing: 0%;
-text-align: center;
-
+.greetings-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 footer {
