@@ -9,8 +9,9 @@
   <meta name="description" content="Карьера в Монете - присоединяйтесь к нашей команде" />
   <link rel="preload" href="src/assets/images/img/hero.png" as="image" />
   <link rel="stylesheet" href="src/index.css" />
-  <!--<link href="https://fonts.googleapis.com/css?family=Wix Madefor Display" rel="stylesheet" />-->
-  <link href="https://fonts.google.com/share?selection.family=Wix+Madefor+Display:wght@400..800" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
 
   <title>Карьера</title>
 </head>
@@ -42,12 +43,12 @@
   </div>
   <main class="main">
     <div class="content__buttons">
-      <a class="button content__button" href="#p1" id="p1">О компании</a>
-      <a class="button content__button" id="p2" href="#p2">Вакансии</a>
+      <a class="button content__button" href="" id="btnCmpny">О компании</a>
+      <a class="button content__button" href="" id="btnVcncy">Вакансии</a>
     </div>
     <div class="content">
       <!-- Company info -->
-      <section>
+      <section id="section-company" class="active-section">
         <!-- About us -->
         <article class="article">
           <h2 class="article__title">Что такое монета</h2>
@@ -361,7 +362,7 @@
         </article>
       </section>
       <!-- Vacancies -->
-      <section>
+      <section id="section-vacancies" class="hidden-section">
         <div class="article">
           <h2 class="article__title">Наши вакансии</h2>
         </div>
@@ -372,6 +373,7 @@
         </div>
         <div class="article__content">
           <div class="vacancies-cards">
+            <!--
             <div class="vacancy-card">
               <div class="icon-vacancies-container">
                 <img class="icon-vacancies" src="src/assets/images/icons/Code.svg" alt="" />
@@ -492,190 +494,198 @@
                 <button class="vacancy-button">Подробнее</button>
               </div>
             </div>
+          -->
           </div>
+        </div>
+        <div class="custom-career">
+          <div class="custom-container">
+            <div class="custom-title">
+              Хочешь работать с нами, но не нашлось подходящей вакансии?
+            </div>
+            <div class="custom-descr">
+              Отправь нам своё резюме через форму — мы обязательно рассмотрим твою кандидатуру и найдём для тебя
+              интересное направление
+            </div>
+          </div>
+          <form class="custom-container career-form" action="" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstname" class="form-label">*Имя</label>
+                <input class="form-input" type="text" name="firstname" id="firstname" autocomplete="off"
+                  placeholder="Иван" required />
+              </div>
+              <div class="form-group">
+                <label for="lastname" class="form-label">*Фамилия</label>
+                <input class="form-input" type="text" name="lastname" id="lastname" autocomplete="off"
+                  placeholder="Иванов" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tel" class="form-label">*Номер телефона</label>
+              <input class="form-input" type="tel" name="tel" id="tel" autocomplete="off" placeholder="+7(999)999 99 99"
+                pattern="\+7\(\d{3}\)\d{3} \d{2} \d{2}" required />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">*Почта</label>
+              <input class="form-input" type="email" name="email" id="email" autocomplete="off"
+                placeholder="ivnovovan@mail.ru" required />
+            </div>
+            <div class="form-group">
+              <label for="url" class="form-label">*Ссылка на резюме или файл(pdf/doc)</label>
+              <input class="form-input" type="url" id="url" name="url" autocomplete="off" placeholder="ссылка на резюме"
+                size="50" required />
+            </div>
+            <button id="uploadButton" class="upload-button">
+              <img class="icon-upload" src="src/assets/images/icons/UploadSimple.svg" alt="" />
+              <span>загрузить файл</span>
+            </button>
+            <button class="form-button" type="submit">Отправить</button>
+          </form>
         </div>
       </section>
       <!-- Vacancies description -->
-      <section class="vacancy-section">
-        <header class="vacancy-header">
-          <div class="load-vacancy-card">
-            <div class="vacancy-title">
-              <div class="back-arow">
-                <a href="#back">
-                  <img src="src/assets/images/icons/Arrow.svg" alt="" />
-                </a>
+      <section id="section-vacancy-descr" class="hidden-section">
+        <div class="vacancy-section">
+          <header class="vacancy-header">
+            <div class="load-vacancy-card">
+              <div class="vacancy-title">
+                <div class="back-arow">
+                  <a href="#back">
+                    <img src="src/assets/images/icons/Arrow.svg" alt="" />
+                  </a>
+                </div>
+                <div>
+                  Системный администратор
+                </div>
               </div>
-              <div>
-                Системный администратор
+              <div class="vacancy-descr">
+                <p><span class="bold-600">Заработная плата: </span>от 117 000 до 180 000 ₽ за месяц, на руки<br />
+                  <span class="bold-600">Опыт работы: </span>3 - 6 лет<br />
+                  <span class="bold-600">Полная занятость<br /></span>
+                  <span class="bold-600">График: </span>5/2<br />
+                  <span class="bold-600">Рабочие часы: </span>8
+                </p>
               </div>
             </div>
-            <div class="vacancy-descr">
-              <p><span class="bold-600">Заработная плата: </span>от 117 000 до 180 000 ₽ за месяц, на руки<br />
-                <span class="bold-600">Опыт работы: </span>3 - 6 лет<br />
-                <span class="bold-600">Полная занятость<br /></span>
-                <span class="bold-600">График: </span>5/2<br />
-                <span class="bold-600">Рабочие часы: </span>8
-              </p>
+            <button id="openForm" class="vacancy-response">Откликнуться</button>
+          </header>
+          <article>
+            <div class="descr-title">Ожидания от кандидата:</div>
+            <ul class="description">
+              <li>Знание и понимание принципов работы сетевых протоколов (модель OSI)</li>
+              <li>
+                Опыт настройки сетевого оборудования L2/L3 (Cisco, Huawei, MikroTik, Juniper, Eltex) работа с командной
+                строкой, понимание конфигураций сетевого оборудования
+              </li>
+              <li>
+                Опыт администрирования ОС Linux: основные сервисы, веб-серверы, виртуализация KVM, развертывание
+                приложений в т.ч. в контейнерах, написание несложных скриптов автоматизации bash / python. Плюсом будет
+                опыт работы с отечественными дистрибутивами Linux
+              </li>
+              <li>
+                Опыт администрирования ОС Windows 10/Srv2012+: AD, управление пользователями, настройка политик,
+                централизованное управление антивирусными средствами
+              </li>
+              <li>Опыт администрирования СУБД (предпочтительно PostgreSQL)</li>
+              <li>Большим плюсом будет опыт работы (сопровождение, администрирование, настройка, развертывание) со</li>
+              <li>средствами криптографической защиты информации, банковскими приложениями</li>
+            </ul>
+          </article>
+          <article>
+            <div class="descr-title">Мы предлагаем:</div>
+            <ul class="description">
+              <li>Работу в аккредитованной IТ-компании</li>
+              <li>Трудовые отношения по ТК РФ с первого дня, со всем положенным соц.пакетом</li>
+              <li>
+                «Белую» зарплату и локальное повышение оклада без жесткого грейдирования: смотрим на опыт, знания и
+                вклад каждого в команду
+              </li>
+              <li>Формат работы: в офисе, удаленный вариант возможен только в качестве резервного</li>
+              <li>Корпоративный английский</li>
+              <li>ДМС со стоматологией</li>
+            </ul>
+            <span>У нас современный офис с парковкой и всем необходимым для комфортной работы и отдыха в самом сердце
+              Йошкар-Олы. Рядом набережная с прекрасными видами, кучей кафешек, театрами, музеями и быстрой
+              доступностью из любой точки города.</span>
+          </article>
+          <dialog id="formDialog" aria-modal="true" aria-labelledby="dialog-title">
+            <div class="modal-form-content">
+              <form class="custom-container career-form" action="" method="post">
+                <div class="modal-card">
+                  <h2 id="dialog-title" class="modal-title">Отклик на вакансию<br>Системный администратор</h2>
+                  <button type="button" class="modal-close" id="closeForm">
+                    <img src="src/assets/images/icons/Menu.svg" alt="" />
+                  </button>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstname" class="form-label">*Имя</label>
+                    <input class="form-input" type="text" name="firstname" id="firstname" autocomplete="off"
+                      placeholder="Иван" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastname" class=" form-label">*Фамилия</label>
+                    <input class="form-input" type="text" name="lastname" id="lastname" autocomplete="off"
+                      placeholder="Иванов" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="tel" class="form-label">*Номер телефона</label>
+                  <input class="form-input" type="tel" name="phone" id="tel" autocomplete="off"
+                    placeholder="+7(999)999 99 99" pattern="\+7\d{3}\d{3}\d{2}\d{2}" required />
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">*Почта</label>
+                  <input class="form-input" type="email" name="email" id="email" autocomplete="off"
+                    placeholder="ivnovovan@mail.ru" required />
+                </div>
+                <div class="form-group">
+                  <label for="url" class="form-label">*Ссылка на резюме или файл(pdf/doc)</label>
+                  <input class="form-input" type="url" id="url" name="url" autocomplete="off"
+                    placeholder="ссылка на резюме" size="50" required />
+                </div>
+                <button id="uploadButton" class="upload-button">
+                  <img class="icon-upload" src="src/assets/images/icons/UploadSimple.svg" alt="" />
+                  <span>загрузить файл</span>
+                </button>
+                <button class="form-button" type="submit">Отправить</button>
+              </form>
             </div>
-          </div>
-          <button class="vacancy-response">Откликнуться</button>
-        </header>
-        <article>
-          <div class="descr-title">Ожидания от кандидата:</div>
-          <ul class="description">
-            <li>Знание и понимание принципов работы сетевых протоколов (модель OSI)</li>
-            <li>
-              Опыт настройки сетевого оборудования L2/L3 (Cisco, Huawei, MikroTik, Juniper, Eltex) работа с командной
-              строкой, понимание конфигураций сетевого оборудования
-            </li>
-            <li>
-              Опыт администрирования ОС Linux: основные сервисы, веб-серверы, виртуализация KVM, развертывание
-              приложений в т.ч. в контейнерах, написание несложных скриптов автоматизации bash / python. Плюсом будет
-              опыт работы с отечественными дистрибутивами Linux
-            </li>
-            <li>
-              Опыт администрирования ОС Windows 10/Srv2012+: AD, управление пользователями, настройка политик,
-              централизованное управление антивирусными средствами
-            </li>
-            <li>Опыт администрирования СУБД (предпочтительно PostgreSQL)</li>
-            <li>Большим плюсом будет опыт работы (сопровождение, администрирование, настройка, развертывание) со</li>
-            <li>средствами криптографической защиты информации, банковскими приложениями</li>
-          </ul>
-        </article>
-        <article>
-          <div class="descr-title">Мы предлагаем:</div>
-          <ul class="description">
-            <li>Работу в аккредитованной IТ-компании</li>
-            <li>Трудовые отношения по ТК РФ с первого дня, со всем положенным соц.пакетом</li>
-            <li>
-              «Белую» зарплату и локальное повышение оклада без жесткого грейдирования: смотрим на опыт, знания и
-              вклад каждого в команду
-            </li>
-            <li>Формат работы: в офисе, удаленный вариант возможен только в качестве резервного</li>
-            <li>Корпоративный английский</li>
-            <li>ДМС со стоматологией</li>
-          </ul>
-          <span>У нас современный офис с парковкой и всем необходимым для комфортной работы и отдыха в самом сердце
-            Йошкар-Олы. Рядом набережная с прекрасными видами, кучей кафешек, театрами, музеями и быстрой
-            доступностью из любой точки города.</span>
-        </article>
-        <!--
-        <dialog open aria-label="Отклик на вакансию" aria-modal="true" id="myDialog">
-          <div class="modal-form-content">
-            <form class="custom-container career-form" action="" method="post">
-              <div class="modal-card">
-                <p class="modal-title">Отклик на вакансию<br>Системный администратор</p>
-                <button class="modal-close" onclick="document.getElementById('myDialog').close()">
+          </dialog>
+          <dialog id="greetingsDialog" aria-modal="true" aria-labelledby="dialog-title">
+            <div class="modal-greetings-content">
+              <div class="greetings-card">
+                <div class="icon_100">
+                  <img src="src/assets/images/icons/SmileCircle.svg" alt="" />
+                </div>
+                <h2 id="dialog-title" class="greetings-title">Отклик отправлен!</h2>
+                <p class="greetings-descr">HR-менеджер скоро свяжется с вами</p>
+                <button type="button" class="modal-close" id="closeGreetings">
                   <img src="src/assets/images/icons/Menu.svg" alt="" />
                 </button>
               </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="name">*Имя</label>
-                  <input class="form-input" type="text" name="name" id="name" placeholder="Иван" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="lastname">*Фамилия</label>
-                  <input class="form-input" type="text" name="lastname" id="lastname" placeholder="Иванов" required />
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="tel">*Номер телефона</label>
-                <input class="form-input" type="tel" name="phone" id="phone" placeholder="+7(999)999 99 99"
-                  pattern="\+7\(\d{3}\)\d{3} \d{2} \d{2}" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">*Почта</label>
-                <input class="form-input" type="email" name="email" id="email" placeholder="ivnovovan@mail.ru"
-                  required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="">*Ссылка на резюме или файл(pdf/doc)</label>
-                <input class="form-input" type="text" placeholder="ссылка на резюме" required />
-              </div>
-              <button class="upload-button">
-                <img class="icon-upload" src="src/assets/images/icons/UploadSimple.svg" alt="" />
-                <span>загрузить файл</span>
-              </button>
-              <button class="form-button" type="submit">Отправить</button>
-            </form>
-          </div>
-        </dialog>
-        <dialog open aria-label="Отклик отправлен" aria-modal="true" id="myDialog">
-          <div class="modal-greetings-content">
-            <div class="greetings-card">
-              <div class="icon_100">
-                <img src="src/assets/images/icons/SmileCircle.svg" alt="" />
-              </div>
-              <p class="greetings-title">Отклик отправлен!</p>
-              <p class="greetings-descr">HR-менеджер скоро свяжется с вами</p>
-              <button class="modal-close" onclick="document.getElementById('myDialog').close()">
-                <img src="src/assets/images/icons/Menu.svg" alt="" />
-              </button>
             </div>
-          </div>
-        </dialog>
-        <dialog open aria-label="Отклик отправлен" aria-modal="true" id="myDialog">
-          <div class="modal-greetings-content">
-            <div class="greetings-card">
-              <div class="icon_100">
-                <img src="src/assets/images/icons/starcircle.svg" alt="" />
+          </dialog>
+          <dialog id="seeultrDialog" aria-modal="true" aria-labelledby="dialog-title">
+            <div class="modal-greetings-content">
+              <div class="greetings-card">
+                <div class="icon_100">
+                  <img src="src/assets/images/icons/starcircle.svg" alt="" />
+                </div>
+                <h2 id="dialog-title" class="greetings-title">Вы уже откликались
+                  <br>на эту вакансию
+                </h2>
+                <p class="greetings-descr">Повторите попытку позже</p>
+                <button type="button" class="modal-close" id="closeSeeultr">
+                  <img src="src/assets/images/icons/Menu.svg" alt="" />
+                </button>
               </div>
-              <p class="greetings-title">Вы уже откликались
-                <br>на эту вакансию
-              </p>
-              <p class="greetings-descr">Повторите попытку позже</p>
-              <button class="modal-close" onclick="document.getElementById('myDialog').close()">
-                <img src="src/assets/images/icons/Menu.svg" alt="" />
-              </button>
             </div>
-          </div>
-        </dialog>
-      -->
+          </dialog>
+        </div>
       </section>
     </div>
   </main>
-  <div class="custom-career">
-    <div class="custom-container">
-      <div class="custom-title">
-        Хочешь работать с нами, но не нашлось подходящей вакансии?
-      </div>
-      <div class="custom-descr">
-        Отправь нам своё резюме через форму — мы обязательно рассмотрим твою кандидатуру и найдём для тебя
-        интересное направление
-      </div>
-    </div>
-    <form class="custom-container career-form" action="" method="post">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="name">*Имя</label>
-          <input class="form-input" type="text" name="name" id="name" placeholder="Иван" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="lastname">*Фамилия</label>
-          <input class="form-input" type="text" name="lastname" id="lastname" placeholder="Иванов" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="tel">*Номер телефона</label>
-        <input class="form-input" type="tel" name="phone" id="phone" placeholder="+7(999)999 99 99"
-          pattern="\+7\(\d{3}\)\d{3} \d{2} \d{2}" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="email">*Почта</label>
-        <input class="form-input" type="email" name="email" id="email" placeholder="ivnovovan@mail.ru" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="">*Ссылка на резюме или файл(pdf/doc)</label>
-        <input class="form-input" type="text" placeholder="ссылка на резюме" required />
-      </div>
-      <button class="upload-button">
-        <img class="icon-upload" src="src/assets/images/icons/UploadSimple.svg" alt="" />
-        <span>загрузить файл</span>
-      </button>
-      <button class="form-button" type="submit">Отправить</button>
-    </form>
-  </div>
   <footer>
     <div class="footer_content">
       <div class="footer_first">

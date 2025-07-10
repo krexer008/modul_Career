@@ -194,7 +194,7 @@ button:active {
   border-radius: 8px 0 0 8px;
 }
 
-.content__button:target {
+.active {
   background: #0080c8;
   color: #ffffff;
 }
@@ -204,6 +204,7 @@ button:active {
 }
 
 .main {
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   padding: 40px 80px 0;
@@ -429,11 +430,19 @@ button:active {
   line-height: 120%;
   color: #0080c8;
 }
-/*
+
 section {
-  margin-bottom: 120px;
+  display: none;
 }
-*/
+
+.active-section {
+  display: block;
+}
+
+.hidden-section {
+  display: none;
+}
+
 .vacancy-type-select {
   display: flex;
   flex-direction: row;
@@ -771,11 +780,11 @@ dialog {
   margin: 0;
   padding: 0;
   border: none;
-  background: rgba(0, 0, 0, 0.7); /* затемнение фона */
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  display: none; /* по умолчанию скрыт */
+}
 
-  /* Центрирование содержимого */
+dialog[open] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -965,19 +974,6 @@ a {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 @media screen and (min-width: 1440px) {
