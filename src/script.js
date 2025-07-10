@@ -1,11 +1,17 @@
 "use strict";
 
-const vacancies = [
-  {
+let currentVacancyId = null;
+
+const vacancies = [{
     id: "e471ae3f-a6ee-46fd-89c1-f3c90d2a876b",
     title: "Разработчик без опыта",
     priority: 3,
-    salary: { from: 10, to: 15, currency: "EUR", gross: false },
+    salary: {
+      from: 10,
+      to: 15,
+      currency: "EUR",
+      gross: false
+    },
     location: "YO",
     experience: "NO_WORK_EXPERIENCE",
     published: "2025-06-27T10:57:57.217Z",
@@ -15,7 +21,12 @@ const vacancies = [
     id: "8b79ca46-c7f7-435a-9eed-c0eec72da8c1",
     title: "Разработчик с опытом от 3 до 6 лет",
     priority: 3,
-    salary: { from: 100000, to: 150000, currency: "RUB", gross: true },
+    salary: {
+      from: 100000,
+      to: 150000,
+      currency: "RUB",
+      gross: true
+    },
     location: "YO",
     experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
     published: "2025-06-27T10:53:22.700Z",
@@ -25,7 +36,12 @@ const vacancies = [
     id: "60a80689-5712-48de-8164-ab335c4716a6",
     title: "Системный аналитик",
     priority: 3,
-    salary: { from: 50, to: 100, currency: "RUB", gross: true },
+    salary: {
+      from: 50,
+      to: 100,
+      currency: "RUB",
+      gross: true
+    },
     location: "YO",
     experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
     published: "2025-06-27T10:30:02.828Z",
@@ -35,7 +51,12 @@ const vacancies = [
     id: "28901838-93b0-4b42-aaec-99a64218b7d0",
     title: "Системный администратор",
     priority: 3,
-    salary: { from: 117000, to: 180000, currency: "RUB", gross: false },
+    salary: {
+      from: 117000,
+      to: 180000,
+      currency: "RUB",
+      gross: false
+    },
     location: "YO",
     experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
     published: "2025-06-27T08:51:36.922Z",
@@ -45,7 +66,12 @@ const vacancies = [
     id: "6c098404-6d49-4a5f-951f-5899b75dde74",
     title: "Web-developer",
     priority: 3,
-    salary: { from: 1000, to: 12000, currency: "USD", gross: true },
+    salary: {
+      from: 1000,
+      to: 12000,
+      currency: "USD",
+      gross: true
+    },
     location: "YO",
     experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
     published: "2025-06-27T08:51:23.965Z",
@@ -67,7 +93,7 @@ vacancies.forEach((vacancy) => {
           </div>
           <div class="vacancy-detail">
             <span class="vacancy-salary">${vacancy.salary.from} - ${vacancy.salary.to} ${vacancy.salary.currency} </span>
-            <button class="vacancy-button id = ${vacancy.id}">Подробнее</button>
+            <button class="vacancy-button" id = "${vacancy.id}">Подробнее</button>
           </div>
         </div>
   `;
@@ -85,6 +111,8 @@ const seeultrDialog = document.getElementById("seeultrDialog");
 const seeultrCloseBtn = document.getElementById("closeSeeultr");
 
 const form = document.querySelector(".career-form"); // Форма внутри диалога
+
+//const dialogFormSubmit = document.getElementById("dialogFormSubmit");
 const submitButton = document.querySelector(".form-button"); // Кнопка отправки
 
 if (formDialog && formOpenBtn && formCloseBtn) {
@@ -104,18 +132,31 @@ if (formDialog && formOpenBtn && formCloseBtn) {
 }
 
 if (formDialog && form && submitButton) {
-  form.addEventListener("submit", (e) => {
+  submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     // Проверяем валидность формы
-    if (form.checkValidity()) {
+     if (form.checkValidity()) {
       formDialog.close();
-      greetingsDialog.showModal();
+      // Добавить проверку пользователя
+      if (true) {
+        greetingsDialog.showModal();
+        resumeSending();
+      } else {
+        //seeultrDialog.showModal();
+      }
+    }
+      /*
     } else {
-      seeultrDialog.showModal(); // Исправить для ошибки валидации
+      const invalidFields = form.querySelectorAll(":invalid");
+      invalidFields.forEach(field => {
+        field.style.border = "2px solid red";
+      });
       alert("Заполните все обязательные поля!");
     }
+    */
   });
 }
+
 // Close greetingsDialog
 if (greetingsDialog && greetingsCloseBtn) {
   greetingsCloseBtn.addEventListener("click", () => {
@@ -124,8 +165,8 @@ if (greetingsDialog && greetingsCloseBtn) {
   });
 }
 
-// Close greetingsDialog
-if (seeultrDialog && greetingsCloseBtn) {
+// Close seeultrDialog
+if (seeultrDialog && seeultrCloseBtn) {
   seeultrCloseBtn.addEventListener("click", () => {
     seeultrDialog.close();
     seeultrDialog.removeAttribute("aria-modal");
@@ -133,14 +174,22 @@ if (seeultrDialog && greetingsCloseBtn) {
 }
 
 // Переключение между контентом
+const mainSections = document.querySelectorAll('section');
 const btnCmpny = document.getElementById("btnCmpny");
 const btnVcncy = document.getElementById("btnVcncy");
 
 const sectionCompany = document.getElementById("section-company");
 const sectionVacancies = document.getElementById("section-vacancies");
-//const sectionVacancyDescription = document.getElementById("section-vacancy-descr");
 
-// Обработчики
+// Hide all another sections
+function hideAllSection() {
+  mainSections.forEach(section => {
+    section.classList.remove("active-section");
+    section.classList.add("hidden-section");
+  });
+}
+
+// Handlers
 btnCmpny.addEventListener("click", (e) => {
   e.preventDefault();
   switchSection("company");
@@ -151,16 +200,18 @@ btnVcncy.addEventListener("click", (e) => {
   switchSection("vacancies");
 });
 
-// Switcher
 
+
+// Switcher
 function switchSection(sectionName) {
+
+  currentVacancyId = null;
   // Hidden all sections
-  sectionCompany.classList.remove("active-section");
-  sectionCompany.classList.add("hidden-section");
-  sectionVacancies.classList.remove("active-section");
-  sectionVacancies.classList.add("hidden-section");
+  hideAllSection();
+
   btnCmpny.classList.remove("active");
   btnVcncy.classList.remove("active");
+
 
   // Activating section
   if (sectionName === "company") {
@@ -178,3 +229,53 @@ function switchSection(sectionName) {
 
 // Initial first section
 switchSection("company");
+
+// Логика страницы с описанием вакансии
+const vacancyButtons = document.querySelectorAll('.vacancy-button');
+const backArrowBtn = document.querySelector('.back-arrow');
+const sectionVacancyDescr = document.querySelector('#section-vacancy-descr');
+
+// Vacancies buttons handler
+vacancyButtons.forEach(button => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    currentVacancyId = button.id;
+
+    // Hide all another sections
+    hideAllSection();
+
+    // Show vacancy description section
+    sectionVacancyDescr.classList.remove("hidden-section");
+    sectionVacancyDescr.classList.add("active-section");
+
+    // Здесь загрузить данные вакансии по currentVacancyId
+    // loadVacancyData(currentVacancyId);
+  });
+});
+
+// back button handler
+backArrowBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  sectionVacancyDescr.classList.remove("active-section");
+  sectionVacancyDescr.classList.add("hidden-section");
+
+  sectionVacancies.classList.remove("hidden-section");
+  sectionVacancies.classList.add("active-section");
+
+  currentVacancyId = null;
+});
+
+
+//loadVacancyData
+/*
+function loadVacancyData(vacancyId) {
+  fetch(`/api/vacancies/${vacancyId}`)
+    .then(response => response.json())
+    .then(data => {
+      // Заполняем секцию данными
+      document.querySelector('#section-vacancy-descr .vacancy-title').textContent = data.title;
+      document.querySelector('#section-vacancy-descr .vacancy-description').innerHTML = data.description;
+    })
+    .catch(error => console.error('Ошибка загрузки:', error));
+}
+*/
