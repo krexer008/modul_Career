@@ -1,8 +1,13 @@
 "use strict";
 
+window.addEventListener("beforeunload", () => {
+  clearAllForms();
+});
+
 let currentVacancyId = null;
 
-const vacancies = [{
+const vacancies = [
+  {
     id: "e471ae3f-a6ee-46fd-89c1-f3c90d2a876b",
     title: "Разработчик без опыта",
     priority: 3,
@@ -10,7 +15,7 @@ const vacancies = [{
       from: 10,
       to: 15,
       currency: "EUR",
-      gross: false
+      gross: false,
     },
     location: "YO",
     experience: "NO_WORK_EXPERIENCE",
@@ -25,7 +30,7 @@ const vacancies = [{
       from: 100000,
       to: 150000,
       currency: "RUB",
-      gross: true
+      gross: true,
     },
     location: "YO",
     experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
@@ -40,7 +45,7 @@ const vacancies = [{
       from: 50,
       to: 100,
       currency: "RUB",
-      gross: true
+      gross: true,
     },
     location: "YO",
     experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
@@ -55,7 +60,7 @@ const vacancies = [{
       from: 117000,
       to: 180000,
       currency: "RUB",
-      gross: false
+      gross: false,
     },
     location: "YO",
     experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
@@ -70,7 +75,7 @@ const vacancies = [{
       from: 1000,
       to: 12000,
       currency: "USD",
-      gross: true
+      gross: true,
     },
     location: "YO",
     experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
@@ -100,9 +105,11 @@ vacancies.forEach((vacancy) => {
 });
 
 // Dialogs elements
-const formDialog = document.getElementById("formDialog");
+const formDialogWrapper = document.getElementById("formDialogWrapper");
 const formOpenBtn = document.getElementById("openForm");
 const formCloseBtn = document.getElementById("closeForm");
+const uploadDialogResume = document.getElementById("uploadDialogResume");
+const uploadCustomResume = document.getElementById("uploadCustomResume");
 
 const greetingsDialog = document.getElementById("greetingsDialog");
 const greetingsCloseBtn = document.getElementById("closeGreetings");
@@ -110,51 +117,132 @@ const greetingsCloseBtn = document.getElementById("closeGreetings");
 const seeultrDialog = document.getElementById("seeultrDialog");
 const seeultrCloseBtn = document.getElementById("closeSeeultr");
 
-const form = document.querySelector(".career-form"); // Форма внутри диалога
+const dialogForm = document.getElementById("dialogForm"); // Форма внутри диалога
+const dialogFormSubmit = document.getElementById("dialogFormSubmit"); // Кнопка отправки
 
-//const dialogFormSubmit = document.getElementById("dialogFormSubmit");
-const submitButton = document.querySelector(".form-button"); // Кнопка отправки
+const customForm = document.getElementById("customForm");
+const customFormSubmit = document.getElementById("customFormSubmit"); // Кнопка отправки
 
-if (formDialog && formOpenBtn && formCloseBtn) {
-  // Opening form dialog
-  formOpenBtn.addEventListener("click", () => {
-    formDialog.showModal();
-  });
-
-  // Closing dialog
-  formCloseBtn.addEventListener("click", (e) => {
+// Opening form dialog
+if (formDialogWrapper && formOpenBtn) {
+  formOpenBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    formDialog.close();
-    formDialog.removeAttribute("aria-modal");
+    formDialogWrapper.showModal();
   });
 } else {
   console.error("Не удалось найти элементы");
 }
 
-if (formDialog && form && submitButton) {
-  submitButton.addEventListener("click", (e) => {
+// Closing dialog
+if (formDialogWrapper && formOpenBtn && formCloseBtn) {
+  formCloseBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    // Проверяем валидность формы
-     if (form.checkValidity()) {
-      formDialog.close();
-      // Добавить проверку пользователя
-      if (true) {
-        greetingsDialog.showModal();
-        resumeSending();
-      } else {
-        //seeultrDialog.showModal();
-      }
-    }
-      /*
-    } else {
-      const invalidFields = form.querySelectorAll(":invalid");
-      invalidFields.forEach(field => {
-        field.style.border = "2px solid red";
-      });
-      alert("Заполните все обязательные поля!");
-    }
-    */
+    formDialogWrapper.close();
+    formDialogWrapper.removeAttribute("aria-modal");
+    clearForm(dialogForm);
   });
+} else {
+  console.error("Не удалось найти элементы");
+}
+
+// Dialog form handler
+if (formDialogWrapper && dialogForm && dialogFormSubmit && uploadDialogResume) {
+  addInputListenersToForm(dialogForm);
+
+  dialogFormSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Сброс предыдущих подсветок
+    resetInvalidFields(dialogForm);
+
+    //Upload resume
+    uploadDialogResume.addEventListener("click", (e) => {
+      e.preventDefault();
+      // uploadResume();
+    });
+
+    // Проверяем валидность формы
+    if (dialogForm.checkValidity()) {
+      // Добавить проверку пользователя
+      //if (checkUser()) {
+      //resumeSending();
+      formDialogWrapper.close();
+      greetingsDialog.showModal();
+      clearForm(dialogForm);
+      //} else {
+      //seeultrDialog.showModal();
+      //}
+    } else {
+      highlightInvalidFields(dialogForm);
+    }
+  });
+}
+
+// Custom form handler
+if (customForm && customFormSubmit && uploadCustomResume) {
+  addInputListenersToForm(customForm);
+
+  customFormSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Сброс предыдущих подсветок
+    resetInvalidFields(customForm);
+
+    //Upload resume
+    uploadCustomResume.addEventListener("click", (e) => {
+      e.preventDefault();
+      // uploadResume();
+    });
+
+    // Проверяем валидность формы
+    if (customForm.checkValidity()) {
+      // Добавить проверку пользователя
+      //if (checkUser()) {
+      //resumeSending();
+      greetingsDialog.showModal();
+      clearForm(customForm);
+      //} else {
+      //seeultrDialog.showModal();
+      //}
+    } else {
+      highlightInvalidFields(customForm);
+    }
+  });
+}
+
+function addInputListenersToForm(form) {
+  const fields = form.querySelectorAll(".form-input");
+  fields.forEach((field) => {
+    field.addEventListener("input", () => {
+      resetFieldStyle(field);
+      // Проверяем валидность в реальном времени
+      if (field.checkValidity()) {
+        field.style.borderColor = "#e2e6ed";
+      } else {
+        field.style.borderColor = "red";
+      }
+    });
+  });
+}
+
+// Функция подсветки невалидных полей
+function highlightInvalidFields(form) {
+  const invalidFields = form.querySelectorAll(".form-input:invalid");
+  invalidFields.forEach((field) => {
+    field.style.borderColor = "red";
+    field.style.boxShadow = "0 0 0 2px rgba(255, 0, 0, 0.1)";
+  });
+}
+
+// Функция сброса стилей поля
+function resetFieldStyle(field) {
+  field.style.borderColor = "#e2e6ed";
+  field.style.boxShadow = "none";
+}
+
+// Функция сброса всех невалидных полей
+function resetInvalidFields(form) {
+  const allFields = form.querySelectorAll(".form-input");
+  allFields.forEach((field) => resetFieldStyle(field));
 }
 
 // Close greetingsDialog
@@ -162,6 +250,7 @@ if (greetingsDialog && greetingsCloseBtn) {
   greetingsCloseBtn.addEventListener("click", () => {
     greetingsDialog.close();
     greetingsDialog.removeAttribute("aria-modal");
+    clearAllForms();
   });
 }
 
@@ -173,8 +262,23 @@ if (seeultrDialog && seeultrCloseBtn) {
   });
 }
 
+// Функция для очистки всех полей формы
+function clearForm(form) {
+  const fields = form.querySelectorAll("input, textarea, select");
+  fields.forEach((field) => {
+    field.value = "";
+    resetFieldStyle(field); // Сбрасываем стили, если они были невалидными
+  });
+}
+
+// Функция для очистки всех форм на странице
+function clearAllForms() {
+  const forms = document.querySelectorAll("form");
+  forms.forEach((form) => clearForm(form));
+}
+
 // Переключение между контентом
-const mainSections = document.querySelectorAll('section');
+const mainSections = document.querySelectorAll("section");
 const btnCmpny = document.getElementById("btnCmpny");
 const btnVcncy = document.getElementById("btnVcncy");
 
@@ -183,7 +287,7 @@ const sectionVacancies = document.getElementById("section-vacancies");
 
 // Hide all another sections
 function hideAllSection() {
-  mainSections.forEach(section => {
+  mainSections.forEach((section) => {
     section.classList.remove("active-section");
     section.classList.add("hidden-section");
   });
@@ -200,18 +304,15 @@ btnVcncy.addEventListener("click", (e) => {
   switchSection("vacancies");
 });
 
-
-
 // Switcher
 function switchSection(sectionName) {
-
   currentVacancyId = null;
   // Hidden all sections
   hideAllSection();
+  clearAllForms();
 
   btnCmpny.classList.remove("active");
   btnVcncy.classList.remove("active");
-
 
   // Activating section
   if (sectionName === "company") {
@@ -231,12 +332,12 @@ function switchSection(sectionName) {
 switchSection("company");
 
 // Логика страницы с описанием вакансии
-const vacancyButtons = document.querySelectorAll('.vacancy-button');
-const backArrowBtn = document.querySelector('.back-arrow');
-const sectionVacancyDescr = document.querySelector('#section-vacancy-descr');
+const vacancyButtons = document.querySelectorAll(".vacancy-button");
+const backArrowBtn = document.querySelector(".back-arrow");
+const sectionVacancyDescr = document.querySelector("#section-vacancy-descr");
 
 // Vacancies buttons handler
-vacancyButtons.forEach(button => {
+vacancyButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     currentVacancyId = button.id;
@@ -264,7 +365,6 @@ backArrowBtn.addEventListener("click", (e) => {
 
   currentVacancyId = null;
 });
-
 
 //loadVacancyData
 /*
