@@ -578,7 +578,7 @@ section {
   background: #ffffff;
 }
 
-.custom {
+.custom-form {
   width: 637px;
   height: 620px;
 }
@@ -717,6 +717,7 @@ input[type="url"] {
 .vacancy-header {
   height: 188px;
   width: 100%;
+  margin-top:20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
