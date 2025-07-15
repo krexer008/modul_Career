@@ -1,7 +1,11 @@
 "use strict";
 
 // Импортируем шаблоны
-import { VACANCY_CARD_TEMPLATE, MODAL_HEADER_TEMPLATE, FORM_TEMPLATE } from "./templates.js";
+import {
+  VACANCY_CARD_TEMPLATE,
+  MODAL_HEADER_TEMPLATE,
+  FORM_TEMPLATE
+} from "./templates.js";
 
 //import { vacancies } from './data.js';
 
@@ -11,97 +15,101 @@ window.addEventListener("beforeunload", () => {
   clearAllForms();
 });
 
-const vacancies = [
-  {
-    id: "e471ae3f-a6ee-46fd-89c1-f3c90d2a876b",
-    title: "Разработчик без опыта",
-    priority: 3,
-    salary: {
-      from: 10,
-      to: 15,
-      currency: "EUR",
-      gross: false,
+const vacancies = [{
+    "id": "e471ae3f-a6ee-46fd-89c1-f3c90d2a876b",
+    "title": "Разработчик без опыта",
+    "priority": 3,
+    "salary": {
+      "from": 10,
+      "to": 15,
+      "currency": "EUR",
+      "gross": false
     },
-    location: "YO",
-    experience: "NO_WORK_EXPERIENCE",
-    published: "2025-06-27T10:57:57.217Z",
-    url: "",
+    "location": "YO",
+    "experience": "NO_WORK_EXPERIENCE",
+    "published": "2025-06-27T10:57:57.217Z",
+    "url": "",
+    "department": "developer"
   },
   {
-    id: "8b79ca46-c7f7-435a-9eed-c0eec72da8c1",
-    title: "Разработчик с опытом от 3 до 6 лет",
-    priority: 3,
-    salary: {
-      from: 100000,
-      to: 150000,
-      currency: "RUB",
-      gross: true,
+    "id": "8b79ca46-c7f7-435a-9eed-c0eec72da8c1",
+    "title": "Разработчик с опытом от 3 до 6 лет",
+    "priority": 3,
+    "salary": {
+      "from": 100000,
+      "to": 150000,
+      "currency": "RUB",
+      "gross": true
     },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
-    published: "2025-06-27T10:53:22.700Z",
-    url: "",
+    "location": "YO",
+    "experience": "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
+    "published": "2025-06-27T10:53:22.700Z",
+    "url": "",
+    "department": "backoffice"
   },
   {
-    id: "60a80689-5712-48de-8164-ab335c4716a6",
-    title: "Системный аналитик",
-    priority: 3,
-    salary: {
-      from: 50,
-      to: 100,
-      currency: "RUB",
-      gross: true,
+    "id": "60a80689-5712-48de-8164-ab335c4716a6",
+    "title": "Системный аналитик",
+    "priority": 3,
+    "salary": {
+      "from": 50,
+      "to": 100,
+      "currency": "RUB",
+      "gross": true
     },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
-    published: "2025-06-27T10:30:02.828Z",
-    url: "",
+    "location": "YO",
+    "experience": "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
+    "published": "2025-06-27T10:30:02.828Z",
+    "url": "",
+    "department": "backoffice"
   },
   {
-    id: "28901838-93b0-4b42-aaec-99a64218b7d0",
-    title: "Системный администратор",
-    priority: 3,
-    salary: {
-      from: 117000,
-      to: 180000,
-      currency: "RUB",
-      gross: false,
+    "id": "28901838-93b0-4b42-aaec-99a64218b7d0",
+    "title": "Системный администратор",
+    "priority": 3,
+    "salary": {
+      "from": 117000,
+      "to": 180000,
+      "currency": "RUB",
+      "gross": false
     },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
-    published: "2025-06-27T08:51:36.922Z",
-    url: "",
+    "location": "YO",
+    "experience": "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
+    "published": "2025-06-27T08:51:36.922Z",
+    "url": "",
+    "department": "developer"
   },
   {
-    id: "6c098404-6d49-4a5f-951f-5899b75dde74",
-    title: "Web-developer",
-    priority: 3,
-    salary: {
-      from: 1000,
-      to: 12000,
-      currency: "USD",
-      gross: true,
+    "id": "6c098404-6d49-4a5f-951f-5899b75dde74",
+    "title": "Web-developer",
+    "priority": 3,
+    "salary": {
+      "from": 1000,
+      "to": 12000,
+      "currency": "USD",
+      "gross": true
     },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
-    published: "2025-06-27T08:51:23.965Z",
-    url: "",
-  },
+    "location": "YO",
+    "experience": "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
+    "published": "2025-06-27T08:51:23.965Z",
+    "url": "",
+    "department": "developer"
+  }
 ];
 
 // Рендеринг Vacancy description
 
 function renderVacancy() {
-  const vacancyTitle = vacancies.find((v) => v.id === currentVacancyId)?.title || "Название вакансии";
+  const vacancy = vacancies.find((v) => v.id === currentVacancyId);
 
-  const VACANCY_DESCRIPTIONS = (vacancy) => `
+  const VACANCY_DESCRIPTIONS = () => `
 <header class="vacancy-header">
   <div class="load-vacancy-card">
     <div class="vacancy-title">
-      <button class="back-arrow">
+      <button id="backArrow" class="back-arrow">
         <img src="modul_Career/src/assets/images/icons/Arrow.svg" alt="">
       </button>
-      <div>${vacancy.title}</div>
+      <div>Системный администратор</div>
     </div>
     <div class="vacancy-descr">
       <p>
@@ -171,6 +179,8 @@ vacancies.forEach((vacancy) => {
   vacancies_cards.innerHTML += VACANCY_CARD_TEMPLATE(vacancy);
 });
 
+//const 
+
 // Form element template
 const customFormContainer = document.querySelector(".custom-form");
 const dialogFormContainer = document.querySelector(".dialog-form");
@@ -179,7 +189,7 @@ function renderForm() {
   clearFormContainer(dialogFormContainer);
   clearFormContainer(customFormContainer);
 
-  const vacancyTitle = vacancies.find((v) => v.id === currentVacancyId)?.title || "Название вакансии";
+  const vacancyTitle = vacancies.find((v) => v.id === currentVacancyId) ?.title || "Название вакансии";
 
   if (currentVacancyId) {
     dialogFormContainer.innerHTML = MODAL_HEADER_TEMPLATE(vacancyTitle) + FORM_TEMPLATE;
@@ -194,9 +204,8 @@ function clearFormContainer(container) {
 }
 
 // Dialogs elements
-const formDialogWrapper = document.getElementById("formDialogWrapper");
 
-const formOpenBtn = document.getElementById("openDialogForm");
+//const formOpenBtn = document.getElementById("openDialogForm");
 
 const greetingsDialog = document.getElementById("greetingsDialog");
 const greetingsCloseBtn = document.getElementById("closeGreetings");
@@ -205,18 +214,18 @@ const seeultrDialog = document.getElementById("seeultrDialog");
 const seeultrCloseBtn = document.getElementById("closeSeeultr");
 
 // Opening form dialog
-if (formDialogWrapper && formOpenBtn) {
-  formOpenBtn.addEventListener("click", (e) => {
+
+document.addEventListener("click", (e) => {
+  const formDialogWrapper = document.getElementById("formDialogWrapper");
+  const resumeForm = document.getElementById("resumeForm");
+
+  // Opening form dialog
+  if (e.target.id === "openDialogForm" || e.target.closest("#openDialogForm")) {
     e.preventDefault();
     formDialogWrapper.showModal();
     renderForm();
-  });
-} else {
-  console.error("Не удалось найти элементы");
-}
+  }
 
-document.addEventListener("click", (e) => {
-  const resumeForm = document.getElementById("resumeForm");
 
   // Closing form dialog
   if (e.target.id === "closeForm" || e.target.closest("#closeForm")) {
@@ -368,6 +377,7 @@ function switchSection(sectionName) {
     sectionVacancies.classList.add("active-section");
     btnCmpny.classList.remove("active");
     btnVcncy.classList.add("active");
+    renderVacancy();
     renderForm();
   }
 }
@@ -377,7 +387,7 @@ switchSection("company");
 
 // Логика страницы с описанием вакансии
 const vacancyButtons = document.querySelectorAll(".vacancy-button");
-const backArrowBtn = document.querySelector(".back-arrow");
+//const backArrowBtn = document.querySelector(".back-arrow");
 const sectionVacancyDescr = document.querySelector("#section-vacancy-descr");
 
 // Vacancies buttons handler
@@ -402,14 +412,16 @@ vacancyButtons.forEach((button) => {
 });
 
 // back button handler
-backArrowBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  sectionVacancyDescr.classList.remove("active-section");
-  sectionVacancyDescr.classList.add("hidden-section");
+document.addEventListener("click", (e) => {
+  if (e.target.id === "backArrow" || e.target.closest("#backArrow")) {
+    e.preventDefault();
+    sectionVacancyDescr.classList.remove("active-section");
+    sectionVacancyDescr.classList.add("hidden-section");
 
-  sectionVacancies.classList.remove("hidden-section");
-  sectionVacancies.classList.add("active-section");
-  switchSection();
+    sectionVacancies.classList.remove("hidden-section");
+    sectionVacancies.classList.add("active-section");
+    switchSection();
+  }
 });
 
 //loadVacancyData

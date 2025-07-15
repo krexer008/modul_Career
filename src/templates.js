@@ -22,7 +22,8 @@ const escapeHtml = (unsafe) => {
 const VACANCY_CARD_TEMPLATE = (vacancy) => `
   <div class="vacancy-card">
     <div class="icon-vacancies-container">
-      <img class="icon-vacancies" src="modul_Career/src/assets/images/icons/Code.svg" alt="">
+    <img class="icon-vacancies" 
+    src="modul_Career/src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
     </div>
     <div class="vacancy-position-container">
       <h4 class="vacancy-position">${escapeHtml(vacancy.title)}</h4>
@@ -84,4 +85,8 @@ const FORM_TEMPLATE = `
 </form>
 `;
 
-export { VACANCY_CARD_TEMPLATE, MODAL_HEADER_TEMPLATE, FORM_TEMPLATE };
+export {
+  VACANCY_CARD_TEMPLATE,
+  MODAL_HEADER_TEMPLATE,
+  FORM_TEMPLATE
+};
