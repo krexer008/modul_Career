@@ -85,8 +85,74 @@ const FORM_TEMPLATE = `
 </form>
 `;
 
+const VACANCY_DESCRIPTIONS = (vacancy) => `
+<header class="vacancy-header">
+  <div class="load-vacancy-card">
+    <div class="vacancy-title">
+      <button id="backArrow" class="back-arrow">
+        <img src="modul_Career/src/assets/images/icons/Arrow.svg" alt="">
+      </button>
+      <div>${vacancy.title}</div>
+    </div>
+    <div class="vacancy-descr">
+      <p>
+        <span class="bold-600">Заработная плата: </span>от ${vacancy.salary.from} до ${vacancy.salary.to} ${vacancy.salary.currency} за месяц, 
+        ${vacancy.salary.gross ? 'до вычета налогов': 'на руки'}<br>
+        <span class="bold-600">Опыт работы: </span>3 - 6 лет<br>
+        <span class="bold-600">Полная занятость<br></span>
+        <span class="bold-600">График: </span>5/2<br>
+        <span class="bold-600">Рабочие часы: </span>8
+      </p> 
+    </div>
+  </div>
+  <button id="openDialogForm" class="vacancy-response">Откликнуться</button>
+</header>
+<article>
+  <h2 class="descr-title">Ожидания от кандидата:</h2>
+  <ul class="description">
+    <li>Знание и понимание принципов работы сетевых протоколов (модель OSI)</li>
+    <li>
+      Опыт настройки сетевого оборудования L2/L3 (Cisco, Huawei, MikroTik, Juniper, Eltex) работа с
+      командной строкой, понимание конфигураций сетевого оборудования
+    </li>
+    <li>
+      Опыт администрирования ОС Linux: основные сервисы, веб-серверы, виртуализация KVM, развертывание
+      приложений в т.ч. в контейнерах, написание несложных скриптов автоматизации bash / python. Плюсом
+      будет опыт работы с отечественными дистрибутивами Linux
+    </li>
+    <li>
+      Опыт администрирования ОС Windows 10/Srv2012+: AD, управление пользователями, настройка политик,
+      централизованное управление антивирусными средствами
+    </li>
+    <li>Опыт администрирования СУБД (предпочтительно PostgreSQL)</li>
+    <li>
+      Большим плюсом будет опыт работы (сопровождение, администрирование, настройка, развертывание) со
+    </li>
+    <li>средствами криптографической защиты информации, банковскими приложениями</li>
+  </ul>
+</article>
+<article>
+  <h2 class="descr-title">Мы предлагаем:</h2>
+  <ul class="description">
+    <li>Работу в аккредитованной IТ-компании</li>
+    <li>Трудовые отношения по ТК РФ с первого дня, со всем положенным соц.пакетом</li>
+    <li>
+      «Белую» зарплату и локальное повышение оклада без жесткого грейдирования: смотрим на опыт, знания и
+      вклад каждого в команду
+    </li>
+    <li>Формат работы: в офисе, удаленный вариант возможен только в качестве резервного</li>
+    <li>Корпоративный английский</li>
+    <li>ДМС со стоматологией</li>
+  </ul>
+  <span>У нас современный офис с парковкой и всем необходимым для комфортной работы и отдыха в самом сердце
+  Йошкар-Олы. Рядом набережная с прекрасными видами, кучей кафешек, театрами, музеями и быстрой
+  доступностью из любой точки города.</span>
+  </article>
+  `;
+
 export {
   VACANCY_CARD_TEMPLATE,
   MODAL_HEADER_TEMPLATE,
-  FORM_TEMPLATE
+  FORM_TEMPLATE,
+  VACANCY_DESCRIPTIONS
 };

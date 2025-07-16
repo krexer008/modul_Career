@@ -443,7 +443,7 @@ section {
   display: none;
 }
 
-.vacancy-type-select {
+.vacancy-type-buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -455,7 +455,7 @@ section {
   background: #ffffff;
 }
 
-.vacancy-type-select-button {
+.vacancy-type-button {
   flex-basis: auto;
   height: 40px;
   gap: 10px;
@@ -470,12 +470,13 @@ section {
   line-height: 20px;
   letter-spacing: 0%;
   color: #7a7b7c;
+  border: 1px solid #f4f6f8;
 }
 
-.vacancy-type-select-button:target {
-  background: #0080c8;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+.vacancy-type-button_active {
+  background: #dceaf3;
+  color: #0080c8;
+  border: 1px solid #0080c8;
 }
 
 .vacancy-type-select-button a {
@@ -606,7 +607,7 @@ section {
 
 .career-form {
   height: 100%;
-  width: 100%;  
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -627,7 +628,7 @@ section {
   gap: 8px;
 }
 
-.form-group_upload{
+.form-group_upload {
   height: 214px;
 }
 
@@ -715,9 +716,9 @@ input[type="url"] {
 }
 
 .vacancy-header {
-  height: 188px;
+  height: 100%;
   width: 100%;
-  margin-top:20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -818,7 +819,7 @@ dialog[open] {
   align-items: center;
 }
 
-.form-container {  
+.form-container {
   display: flex;
   flex-direction: column;
   padding: 24px;
