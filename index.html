@@ -1,13 +1,453 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="https://www.moneta.ru/favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://www.moneta.ru/info/public/logo/favicon_moneta_48.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Карьера в Монете - присоединяйтесь к нашей команде">
+  <link rel="preload" href="src/assets/images/img/hero.png" as="image">
+  <link rel="stylesheet" href="src/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
+  <title>Карьера</title>
+</head>
+
+<body>
+  <!--<div id="root"></div>-->
+  <div class="intro">
+    <header class="header">
+      <span>
+        <a href="https://www.moneta.ru">
+          <img class="logo" src="src/assets/images/icons/moneta-logo.svg" alt="logo">
+        </a>
+      </span>
+      <nav class="nav">
+        <a class="nav__link nav__link_head" href="#">Бизнесу</a>
+        <a class="nav__link nav__link_head" href="#">Физлицам</a>
+        <a class="nav__link nav__link_head" href="#">Документация</a>
+        <a class="nav__link nav__link_head" href="#">О нас</a>
+        <a class="nav__link nav__link_head" href="#">Контакты</a>
+      </nav>
+      <div class="login">
+        <button class="button login__button">Войти</button>
+        <button class="button login__button">Регистрация</button>
+      </div>
+    </header>
+    <div class="intro__img">
+      <img src="src/assets/images/img/hero.png" alt="Hero">
+    </div>
+  </div>
+  <main class="main">
+    <div class="content__buttons">
+      <a class="button content__button" href="" id="btnCmpny">О компании</a>
+      <a class="button content__button" href="" id="btnVcncy">Вакансии</a>
+    </div>
+    <div class="content">
+      <!-- Company info -->
+      <section id="section-company" class="active-section">
+        <!-- About us -->
+        <article class="article">
+          <h2 class="article__title">Что такое монета</h2>
+          <div class="article__content">
+            <p class="article__descr">
+              Монета — аккредитованная финтех-компания из Йошкар-Олы. Мы помогаем бизнесу принимать, отправлять и
+              учитывать платежи. Закрываем весь цикл: процессинг, банковские расчёты, массовые выплаты, автоматизация
+              платежей.
+            </p>
+            <p class="article__descr">
+              Наши клиенты — от стартапов и самозанятых до крупных компаний с миллионами операций в месяц. Мы берём на
+              себя сложную работу с деньгами, чтобы клиенты могли спокойно развивать бизнес.
+            </p>
+          </div>
+          <!--dashboard cards-->
+          <div class="article__content">
+            <div class="dashboard blue-text">
+              <div class="dashboard__card">
+                <span class="dashboard__cipfer">250</span>
+                <span class="descr dashboard__descr">сотрудников по всему миру</span>
+              </div>
+              <div class="dashboard__card">
+                <span class="dashboard__cipfer">20</span>
+                <span class="descr dashboard__descr">лет работаем в финтехе</span>
+              </div>
+              <div class="dashboard__card">
+                <span class="dashboard__cipfer">10K</span>
+                <span class="descr dashboard__descr">компаний-клиентов</span>
+              </div>
+              <div class="dashboard__card">
+                <span class="dashboard__cipfer">4</span>
+                <span class="descr dashboard__descr">комфoротных офиса</span>
+              </div>
+            </div>
+          </div>
+          <div class="article__content">
+            <img class="team-img" src="src/assets/images/img/team.png" alt="Team">
+          </div>
+        </article>
+        <!-- Our principes -->
+        <article class="article">
+          <h2 class="article__title">Наши принципы</h2>
+          <div class="article__content">
+            <div class="top-cards">
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/CloudSun.svg" alt="CloudSun">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title blue-text">Ценим баланс и комфорт</span>
+                </div>
+                <p class="descr">
+                  Мы уважаем твоё личное время и стремимся создать условия, где ты можешь работать эффективно. У нас
+                  нет тотального контроля — мы доверяем тебе и ценим результат, а не количество проведённых за
+                  компьютером минут.
+                </p>
+              </div>
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/Heart.svg" alt="Heart">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title blue-text">Слышим мнение каждого</span>
+                </div>
+                <p class="descr">
+                  У нас ценят инициативу и идеи, ведь твоя экспертиза может изменить продукт и даже компанию. Мы даём
+                  пространство для реализации идей каждому —от стажёра до руководителя.
+                </p>
+              </div>
+            </div>
+            <div class="top-cards">
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/Star.svg" alt="Star">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title blue-text">Избегаем барьеров</span>
+                </div>
+                <p class="descr">
+                  Мы стараемся избегать лишней бюрократии: если нужно что‑то решить, то не требуем горы документов.
+                  <br>А если понадобится помощь, то коллеги всегда поддержат и подскажут решение.
+                </p>
+              </div>
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/CaretDoubleUp.svg" alt="CaretDoubleUp">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title blue-text">Растим профессионалов</span>
+                </div>
+                <p class="descr">
+                  Мы оплачиваем курсы и тренинги, проводим воркшопы и даём возможность работать над крутыми проектами.
+                  <br>Расти как специалист или руководитель — выбор за тобой.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Our products -->
+        <article class="article">
+          <h2 class="article__title">Какие инструменты мы создаем</h2>
+          <div class="article__content">
+            <div class="top-cards">
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/OnlineWallet.svg" alt="OnlineWallet">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title">Приём онлайн-платежей</span>
+                </div>
+                <p class="descr">
+                  Подключаем оплату банковскими картами, Системой быстрых платежей (СБП), электронными кошельками и
+                  другими методами. Клиенты платят так, как им удобно,а бизнес получает деньги без задержек.
+                </p>
+              </div>
+              <div class="top-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/Receipt.svg" alt="Receipt">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title">Работа с маркетплейсами</span>
+                </div>
+                <p class="descr">
+                  Предоставляем маркетплейсам платёжные решения: создаём платёжные формы для сайтов, настраиваем приём
+                  платежей от клиентов, распределяем деньги между продавцами и обеспечиваем хранение средств на
+                  кошельке маркетплейса.
+                </p>
+              </div>
+            </div>
+            <div class="top-cards">
+              <div class="bottom-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/CreditCard.svg" alt="CreditCard">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title">Регулярные платежи</span>
+                </div>
+                <p class="descr">
+                  Предоставляем автоматические списания для подписок, аренды и других регулярных услуг.
+                  <br>Это экономит время клиентов и удерживает их.
+                </p>
+              </div>
+              <div class="bottom-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/Wallet.svg" alt="">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title">Встроенные кошельки на сайте</span>
+                </div>
+                <p class="descr">
+                  Разрабатываем кошельки, которые можно встроить прямо на сайт.<br>Это удобно для клиентов и
+                  повышает их лояльность.
+                </p>
+              </div>
+              <div class="bottom-card">
+                <div class="icon-about">
+                  <img src="src/assets/images/icons/IdentificationCard.svg" alt="">
+                </div>
+                <div class="card-title-container">
+                  <span class="card-title">Мультиэквайринг</span>
+                </div>
+                <p class="descr">
+                  Даём возможность работать с несколькими платёжными системами одновременно и получать платежи от
+                  клиентов на счета разных банков. Это снижает риски и повышает надёжность платежей.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Pluses -->
+        <article class="article">
+          <h2 class="article__title">Наши преимущества</h2>
+          <div class="story-cards">
+            <article class="story-card">
+              <div class="story-card__content">
+                <h3 class="story-card__title">Комфортные условия работы</h3>
+                <p class="story-card__text">
+                  Современные офисы в Йошкар-Оле и Москве с удобными рабочими местами или возможность работать из дома
+                  — выбирай, где тебе удобнее.
+                </p>
+              </div>
+              <img class="card__img" src="src/assets/images/img/image.png" alt="">
+            </article>
+            <article class="story-card">
+              <img class="card__img" src="src/assets/images/img/image2.png" alt="">
+              <div class="story-card__content right">
+                <h3 class="story-card__title">Развитие и поддержка</h3>
+                <p class="story-card__text">
+                  Мы помогаем расти: оплачиваем обучение, проводим воркшопы и предоставляем наставников.
+                </p>
+              </div>
+            </article>
+            <article class="story-card">
+              <div class="story-card__content">
+                <h3 class="story-card__title">Влияние на продукт</h3>
+                <p class="story-card__text">
+                  Твои идеи могут изменить наш продукт и повлиять на жизнь тысяч пользователей. Мы ценим инициативу и
+                  даём возможность реализовать свои задумки.
+                </p>
+              </div>
+              <img class="card__img" src="src/assets/images/img/image3.png" alt="">
+            </article>
+            <article class="story-card">
+              <img class="card__img" src="src/assets/images/img/image4.png" alt="">
+              <div class="story-card__content right">
+                <h3 class="story-card__title">Забота о здоровье и комфорте</h3>
+                <p class="story-card__text">
+                  Все плюсы аккредитованной IT-компании, ДМС, компенсация занятий спортом и обучения — мы создаём
+                  условия, чтобы ты чувствовал себя хорошо и мог сосредоточиться на важных задачах. А если хочешь
+                  прокачать английский, у нас есть бесплатные групповые занятия по уровням.
+                </p>
+              </div>
+            </article>
+            <article class="story-card">
+              <div class="story-card__content">
+                <h3 class="story-card__title">Открытая культура</h3>
+                <p class="story-card__text">
+                  У нас нет строгой иерархии — только неформальная атмосфера, где каждый может высказаться и быть
+                  услышанным. Мы общаемся на равных и поддерживаем друг друга.
+                </p>
+              </div>
+              <img class="card__img" src="src/assets/images/img/image5.png" alt="">
+            </article>
+            <article class="story-card">
+              <img class="card__img" src="src/assets/images/img/image6.png" alt="">
+              <div class="story-card__content right">
+                <h3 class="story-card__title">Гибкость и баланс</h3>
+                <p class="story-card__text">
+                  Гибкий график и возможность подстроить рабочий день под свои нужды — мы ценим твоё время и личное
+                  пространство.
+                </p>
+              </div>
+            </article>
+            <article class="story-card">
+              <div class="story-card__content">
+                <h3 class="story-card__title">Команда и увлечения</h3>
+                <p class="story-card__text">
+                  Корпоративные мероприятия, клубы по интересам и возможность находить единомышленников — у нас
+                  работают не просто коллеги, а друзья.
+                </p>
+              </div>
+              <img class="card__img" src="src/assets/images/img/image7.png" alt="">
+            </article>
+          </div>
+        </article>
+        <!-- Employment algo-->
+        <article class="article game">
+          <h2 class="article__title">Как мы принимаем в команду</h2>
+          <div class="article__content">
+            <div class="game-cards">
+              <div class="game-card">
+                <span class="game-stage_num">1</span>
+                <h4 class="game-stage_title">Онлайн-встреча</h4>
+                <p class="game-stage_descr">
+                  Короткий разговор по видеосвязи, чтобы обсудить твои ожидания и наши возможности. Узнаем друг друга
+                  лучше и поймём, есть ли точки соприкосновения.
+                </p>
+              </div>
+              <div class="game-card">
+                <span class="game-stage_num">2</span>
+                <h4 class="game-stage_title">Тестовое задание или техническое интервью</h4>
+                <p class="game-stage_descr">
+                  В зависимости от вакансии мы проводим техническое интервью с экспертами или предлагаем выполнить
+                  тестовое задание. Это позволяет нам лучше оценить ваши навыки, а тебе — познакомиться с нашими
+                  требованиями
+                </p>
+              </div>
+              <div class="game-card">
+                <span class="game-stage_num">3</span>
+                <h4 class="game-stage_title">Финальное собеседование</h4>
+                <p class="game-stage_descr">
+                  Это возможность познакомиться с командой — будущими коллегами, наставником и руководителем. Ты
+                  сможешь обсудить задачи, почувствовать атмосферу и решить, комфортно ли будет работать вместе.
+                </p>
+              </div>
+              <div class="game-card">
+                <span class="game-stage_num">4</span>
+                <h4 class="game-stage_title">Пребординг</h4>
+                <p class="game-stage_descr">
+                  В оффере пропишем ожидания от роли, условия оплаты, бонусы, задачи и закреплённого наставника. Также
+                  поможем с оформлением, выдадим технику, настроим доступы и поддержим в период адаптации.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Welcome -->
+        <article class="article welcome-card">
+          <div class="welcome-text-container">
+            <h2 class="welcome-text">Стань частью команды Монеты уже сейчас</h2>
+          </div>
+          <div class="icon-welcome">
+            <img src="src/assets/images/icons/circles.svg" alt="">
+          </div>
+        </article>
+      </section>
+      <!-- Vacancies -->
+      <section id="section-vacancies" class="hidden-section">
+        <div class="article">
+          <h2 class="article__title">Наши вакансии</h2>
+        </div>
+        <div class="vacancy-type-buttons">
+          <a class="button vacancy-type-button" href="" id="btnAll">Все</a>
+          <a class="button vacancy-type-button" href="" id="btnDev">Техническое направление</a>
+          <a class="button vacancy-type-button" href="" id="btnOffice">Бэкофис и работа с клиентами</a>
+        </div>
+        <div class="article__content">
+          <div class="vacancies-cards">
+          </div>
+        </div>
+        <div class="custom-career">
+          <div class="custom-container">
+            <div class="custom-title">Хочешь работать с нами, но не нашлось подходящей вакансии?</div>
+            <div class="custom-descr">
+              Отправь нам своё резюме через форму — мы обязательно рассмотрим твою кандидатуру и найдём для тебя
+              интересное направление
+            </div>
+          </div>
+          <div class="form-container custom-form">
+          </div>
+        </div>
+      </section>
+      <!-- Vacancies description -->
+      <section id="section-vacancy-descr" class="hidden-section">        
+    </div>
+    <dialog id="formDialogWrapper" aria-modal="true" aria-labelledby="dialog-title" role="dialog">
+      <div class="form-container dialog-form">
+      </div>
+    </dialog>
+    </section>
+    <dialog id="greetingsDialog" aria-modal="true" aria-labelledby="dialog-title" role="dialog">
+      <div class="modal-greetings-content">
+        <div class="greetings-card">
+          <div class="icon_100">
+            <img src="src/assets/images/icons/SmileCircle.svg" alt="">
+          </div>
+          <h2 id="dialog-title" class="greetings-title">Отклик отправлен!</h2>
+          <p class="greetings-descr">HR-менеджер скоро свяжется с вами</p>
+          <button type="button" class="modal-close" id="closeGreetings">
+            <img src="src/assets/images/icons/Menu.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="seeultrDialog" aria-modal="true" aria-labelledby="dialog-title" role="dialog">
+      <div class="modal-greetings-content">
+        <div class="greetings-card">
+          <div class="icon_100">
+            <img src="src/assets/images/icons/starcircle.svg" alt="">
+          </div>
+          <h2 id="dialog-title" class="greetings-title">Вы уже откликались <br>на эту вакансию</h2>
+          <p class="greetings-descr">Повторите попытку позже</p>
+          <button type="button" class="modal-close" id="closeSeeultr">
+            <img src="src/assets/images/icons/Menu.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </dialog>
+    </div>
+  </main>
+  <footer>
+    <div class="footer_content">
+      <div class="footer_first">
+        <a href="https://www.moneta.ru">
+          <img class="logo" src="src/assets/images/icons/moneta-logo.svg" alt="logo">
+        </a>
+        <div class="footer_copy">
+          © 2005 — 2023
+          <a href="/info/d/ru/public/users/nko.htm">НКО «МОНЕТА» (ООО)</a>
+        </div>
+      </div>
+      <div class="footer_menu">
+        <nav class="footer_menu-column">
+          <a class="footer_menu-item" href="#">О нас</a>
+          <a class="footer_menu-item" href="#">Бизнесу</a>
+          <a class="footer_menu-item" href="#">Физлицам</a>
+        </nav>
+        <nav class="footer_menu-column">
+          <a class="footer_menu-item" href="#">Новости</a>
+          <a class="footer_menu-item" href="#">Контакты</a>
+          <a class="footer_menu-item" href="#">Вакансии</a>
+        </nav>
+        <nav class="footer_menu-column">
+          <a class="footer_menu-item" href="#">Задать вопрос</a>
+          <a class="footer_menu-item" href="#">FAQ</a>
+          <a class="footer_menu-item" href="#">Политика конфиденциальности</a>
+        </nav>
+      </div>
+      <div class="footer_last">
+        <div class="footer_social"></div>
+        <a class="vk-logo" href="https://vk.com/moneta_ru" target="_blank">
+          <img src="src/assets/images/icons/vk-logo.svg" alt="logo">
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!--
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+    -->
+  <script type="module" src="src/script.js"></script>
+</body>
+
 </html>
