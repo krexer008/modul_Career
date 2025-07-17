@@ -23,7 +23,7 @@ const VACANCY_CARD_TEMPLATE = (vacancy) => `
   <div class="vacancy-card">
     <div class="icon-vacancies-container">
     <img class="icon-vacancies" 
-    src="/src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
+    src="./src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
     </div>
     <div class="vacancy-position-container">
       <h4 class="vacancy-position">${escapeHtml(vacancy.title)}</h4>
@@ -40,7 +40,7 @@ const MODAL_HEADER_TEMPLATE = (title) => `
   <div class="modal-form-title">
     <h2 id="dialog-title" class="modal-title">Отклик на вакансию<br>${escapeHtml(title)}</h2>
     <button type="button" class="modal-close" id="closeForm">
-      <img src="src/assets/images/icons/Menu.svg" alt="">
+      <img src="./src/assets/images/icons/Menu.svg" alt="">
     </button>
   </div>
 `;
@@ -77,7 +77,7 @@ const FORM_TEMPLATE = `
       size="50" required>
     </div>
     <button id="uploadResume" class="upload-button">
-    <img class="icon-upload" src="src/assets/images/icons/UploadSimple.svg" alt="">
+    <img class="icon-upload" src="./src/assets/images/icons/UploadSimple.svg" alt="">
     <span>загрузить файл</span>
     </button>
   </div>
