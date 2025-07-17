@@ -23,7 +23,7 @@ const VACANCY_CARD_TEMPLATE = (vacancy) => `
   <div class="vacancy-card">
     <div class="icon-vacancies-container">
     <img class="icon-vacancies" 
-    src="./src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
+    ${vacancy.department === "developer" ? 'src="./src/assets/images/icons/Code.svg"' : 'src="./src/assets/images/icons/Toolbox.svg"'} alt="">
     </div>
     <div class="vacancy-position-container">
       <h4 class="vacancy-position">${escapeHtml(vacancy.title)}</h4>
