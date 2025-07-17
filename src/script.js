@@ -1,12 +1,7 @@
 "use strict";
 
 // Импортируем шаблоны
-import {
-  VACANCY_CARD_TEMPLATE,
-  MODAL_HEADER_TEMPLATE,
-  FORM_TEMPLATE,
-  VACANCY_DESCRIPTIONS
-} from "./templates.js";
+import { VACANCY_CARD_TEMPLATE, MODAL_HEADER_TEMPLATE, FORM_TEMPLATE, VACANCY_DESCRIPTIONS } from "./templates.js";
 
 //import { vacancies } from './data.js';
 
@@ -46,88 +41,7 @@ const state = {
 };
 
 // Данные вакансий
-const vacancies = [{
-    id: "e471ae3f-a6ee-46fd-89c1-f3c90d2a876b",
-    title: "Разработчик без опыта",
-    priority: 3,
-    salary: {
-      from: 10,
-      to: 15,
-      currency: "EUR",
-      gross: false,
-    },
-    location: "YO",
-    experience: "NO_WORK_EXPERIENCE",
-    published: "2025-06-27T10:57:57.217Z",
-    url: "",
-    department: "developer",
-  },
-  {
-    id: "8b79ca46-c7f7-435a-9eed-c0eec72da8c1",
-    title: "Разработчик с опытом от 3 до 6 лет",
-    priority: 3,
-    salary: {
-      from: 100000,
-      to: 150000,
-      currency: "RUB",
-      gross: true,
-    },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
-    published: "2025-06-27T10:53:22.700Z",
-    url: "",
-    department: "backoffice",
-  },
-  {
-    id: "60a80689-5712-48de-8164-ab335c4716a6",
-    title: "Системный аналитик",
-    priority: 3,
-    salary: {
-      from: 50,
-      to: 100,
-      currency: "RUB",
-      gross: true,
-    },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
-    published: "2025-06-27T10:30:02.828Z",
-    url: "",
-    department: "backoffice",
-  },
-  {
-    id: "28901838-93b0-4b42-aaec-99a64218b7d0",
-    title: "Системный администратор",
-    priority: 3,
-    salary: {
-      from: 117000,
-      to: 180000,
-      currency: "RUB",
-      gross: false,
-    },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR",
-    published: "2025-06-27T08:51:36.922Z",
-    url: "",
-    department: "developer",
-  },
-  {
-    id: "6c098404-6d49-4a5f-951f-5899b75dde74",
-    title: "Web-developer",
-    priority: 3,
-    salary: {
-      from: 1000,
-      to: 12000,
-      currency: "USD",
-      gross: true,
-    },
-    location: "YO",
-    experience: "WORK_EXPERIENCE_MORE_THAN_6_YEAR",
-    published: "2025-06-27T08:51:23.965Z",
-    url: "",
-    department: "developer",
-  },
-];
-
+const vacancies = [];
 
 // DOM элементы
 const vacanciesСards = document.querySelector(".vacancies-cards");
@@ -147,11 +61,13 @@ const btnVcncy = document.getElementById("btnVcncy");
 
 // Инициализация приложения
 function initApp() {
-  setupEventListeners();  
+  // Данные вакансий
+  loadVacanciesData();
+  setupEventListeners();
 
   if (state.getVacancyId()) {
     state.currentVacancyId = state.getVacancyId();
-    switchSection('vacancies');
+    switchSection("vacancies");
     sectionVacancyDescr.classList.add("active-section");
     renderVacancy();
   } else {
@@ -186,22 +102,17 @@ function switchSection(sectionName) {
 // Показ VacancyСards с Фильтром
 function showVacancies(filterType) {
   vacanciesСards.innerHTML = "";
-  // Здесь загрузить данные вакансии по currentVacancyId
-  // loadVacancyData(currentVacancyId);
+  const vacanciesToShow = filterType ? vacancies.filter((v) => v.department === filterType) : vacancies;
 
-  const vacanciesToShow = filterType ?
-    vacancies.filter(v => v.department === filterType) :
-    vacancies;
-
-  vacanciesToShow.forEach(vacancy => {
-    vacanciesСards.innerHTML += VACANCY_CARD_TEMPLATE(vacancy)
+  vacanciesToShow.forEach((vacancy) => {
+    vacanciesСards.innerHTML += VACANCY_CARD_TEMPLATE(vacancy);
   });
 
   updateFilterButtons(filterType);
 }
 
 function updateFilterButtons(filterType) {
-  [btnAll, btnDev, btnOffice].forEach(btn => {
+  [btnAll, btnDev, btnOffice].forEach((btn) => {
     btn.classList.remove("vacancy-type-button_active");
   });
 
@@ -216,8 +127,8 @@ function updateFilterButtons(filterType) {
 
 // Рендеринг описания вакансии
 function renderVacancy() {
-  const vacancy = vacancies.find(v => v.id === state.currentVacancyId);
-  
+  const vacancy = vacancies.find((v) => v.id === state.currentVacancyId);
+
   sectionVacancyDescr.innerHTML = VACANCY_DESCRIPTIONS(vacancy);
 }
 
@@ -238,19 +149,19 @@ function setupEventListeners() {
   btnAll.addEventListener("click", (e) => {
     e.preventDefault();
     showVacancies();
-    state.saveFilter('all');
+    state.saveFilter("all");
   });
 
   btnDev.addEventListener("click", (e) => {
     e.preventDefault();
     showVacancies("developer");
-    state.saveFilter('developer');
+    state.saveFilter("developer");
   });
 
   btnOffice.addEventListener("click", (e) => {
     e.preventDefault();
     showVacancies("backoffice");
-    state.saveFilter('backoffice');
+    state.saveFilter("backoffice");
   });
 
   // Выбор вакансии
@@ -298,7 +209,6 @@ function setupFormHandlers() {
       e.preventDefault();
       formDialogWrapper.close();
       formDialogWrapper.removeAttribute("aria-modal");
-      clearForm(resumeForm);
       clearFormContainer(dialogFormContainer);
     }
   });
@@ -357,7 +267,7 @@ function setupFormHandlers() {
 
 // Вспомогательные функции
 function hideAllSection() {
-  document.querySelectorAll("section").forEach(section => {
+  document.querySelectorAll("section").forEach((section) => {
     section.classList.remove("active-section");
     section.classList.add("hidden-section");
   });
@@ -379,9 +289,9 @@ function renderForm() {
   clearFormContainer(dialogFormContainer);
   clearFormContainer(customFormContainer);
 
-  const vacancyTitle = state.currentVacancyId ?
-    (vacancies.find(v => v.id === state.currentVacancyId) || {}).title :
-    "Название вакансии";
+  const vacancyTitle = state.currentVacancyId
+    ? (vacancies.find((v) => v.id === state.currentVacancyId) || {}).title
+    : "Название вакансии";
 
   if (state.currentVacancyId) {
     dialogFormContainer.innerHTML = MODAL_HEADER_TEMPLATE(vacancyTitle) + FORM_TEMPLATE;
@@ -412,7 +322,6 @@ function resetFieldStyle(field) {
   field.style.boxShadow = "none";
 }
 
-
 // Функция для очистки всех форм на странице
 function clearAllForms() {
   const forms = document.querySelectorAll("form");
@@ -440,19 +349,17 @@ document.addEventListener("input", (e) => {
   }
 });
 
-//loadVacancyData
-/*
-function loadVacancyData(vacancyId) {
-  fetch(`/api/vacancies/${vacancyId}`)
-    .then(response => response.json())
-    .then(data => {
-      // Заполняем секцию данными
-      document.querySelector('#section-vacancy-descr .vacancy-title').textContent = data.title;
-      document.querySelector('#section-vacancy-descr .vacancy-description').innerHTML = data.description;
-    })
-    .catch(error => console.error('Ошибка загрузки:', error));
+function loadVacanciesData() {
+  const url = "https://learn-9fc9-git-main-imsokolovivs-projects.vercel.app/api/vacancies/list";
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      data.data.forEach((vc) => {
+        vacancies.push(vc);
+        console.log(vc);
+      });
+    });
 }
-*/
 
 // Запуск приложения
 document.addEventListener("DOMContentLoaded", () => {

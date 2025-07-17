@@ -63,7 +63,7 @@ const FORM_TEMPLATE = `
   <div class="form-group">
     <label for="tel" class="form-label">*Номер телефона</label>
     <input class="form-input" type="tel" name="phone" id="tel" autocomplete="off" placeholder="+7(999)999 99 99"
-    pattern="[\\+]\\d{1,3}\\s?[\\(\\d{1,3}\\)]?\\s?\\d{3}[\\s-]?\\d{2}[\\s-]?\\d{2}" required>
+    required>
   </div>
   <div class="form-group">
     <label for="email" class="form-label">*Почта</label>
