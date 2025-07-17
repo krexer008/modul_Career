@@ -62,14 +62,13 @@ const btnVcncy = document.getElementById("btnVcncy");
 // Инициализация приложения
 function initApp() {
   // Данные вакансий
-  loadVacanciesData();
+  getVacancies();
+
   setupEventListeners();
 
   if (state.getVacancyId()) {
     state.currentVacancyId = state.getVacancyId();
     switchSection("vacancies");
-    sectionVacancyDescr.classList.add("active-section");
-    renderVacancy();
   } else {
     switchSection(state.getSection());
   }
@@ -349,14 +348,13 @@ document.addEventListener("input", (e) => {
   }
 });
 
-function loadVacanciesData() {
+function getVacancies() {
   const url = "https://learn-9fc9-git-main-imsokolovivs-projects.vercel.app/api/vacancies/list";
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       data.data.forEach((vc) => {
         vacancies.push(vc);
-        console.log(vc);
       });
     });
 }

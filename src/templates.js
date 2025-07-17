@@ -23,7 +23,7 @@ const VACANCY_CARD_TEMPLATE = (vacancy) => `
   <div class="vacancy-card">
     <div class="icon-vacancies-container">
     <img class="icon-vacancies" 
-    src="modul_Career/src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
+    src="/modul_Career/src/assets/images/icons/${vacancy.department === "developer" ? "Code.svg" : "Toolbox.svg"}" alt="">
     </div>
     <div class="vacancy-position-container">
       <h4 class="vacancy-position">${escapeHtml(vacancy.title)}</h4>
@@ -40,7 +40,7 @@ const MODAL_HEADER_TEMPLATE = (title) => `
   <div class="modal-form-title">
     <h2 id="dialog-title" class="modal-title">Отклик на вакансию<br>${escapeHtml(title)}</h2>
     <button type="button" class="modal-close" id="closeForm">
-      <img src="modul_Career/src/assets/images/icons/Menu.svg" alt="">
+      <img src="/modul_Career/src/assets/images/icons/Menu.svg" alt="">
     </button>
   </div>
 `;
@@ -61,8 +61,8 @@ const FORM_TEMPLATE = `
     </div>
   </div>
   <div class="form-group">
-    <label for="tel" class="form-label">*Номер телефона</label>
-    <input class="form-input" type="tel" name="phone" id="tel" autocomplete="off" placeholder="+7(999)999 99 99"
+    <label for="phone" class="form-label">*Номер телефона</label>
+    <input class="form-input" type="tel" name="phone" id="phone" autocomplete="off" placeholder="+7(999)999 99 99"
     required>
   </div>
   <div class="form-group">
@@ -77,7 +77,7 @@ const FORM_TEMPLATE = `
       size="50" required>
     </div>
     <button id="uploadResume" class="upload-button">
-    <img class="icon-upload" src="modul_Career/src/assets/images/icons/UploadSimple.svg" alt="">
+    <img class="icon-upload" src="/modul_Career/src/assets/images/icons/UploadSimple.svg" alt="">
     <span>загрузить файл</span>
     </button>
   </div>
@@ -90,15 +90,25 @@ const VACANCY_DESCRIPTIONS = (vacancy) => `
   <div class="load-vacancy-card">
     <div class="vacancy-title">
       <button id="backArrow" class="back-arrow">
-        <img src="modul_Career/src/assets/images/icons/Arrow.svg" alt="">
+        <img src="/modul_Career/src/assets/images/icons/Arrow.svg" alt="">
       </button>
       <div>${vacancy.title}</div>
     </div>
     <div class="vacancy-descr">
       <p>
         <span class="bold-600">Заработная плата: </span>от ${vacancy.salary.from} до ${vacancy.salary.to} ${vacancy.salary.currency} за месяц, 
-        ${vacancy.salary.gross ? 'до вычета налогов': 'на руки'}<br>
-        <span class="bold-600">Опыт работы: </span>3 - 6 лет<br>
+        ${vacancy.salary.gross ? "до вычета налогов" : "на руки"}<br>
+        <span class="bold-600">Опыт работы: </span>
+        ${
+          vacancy.experience === "WORK_EXPERIENCE_FROM_1_YEAR_TO_3_YEAR"
+            ? " от 1 года до 3 лет"
+            : vacancy.experience === "WORK_EXPERIENCE_FROM_3_YEAR_TO_6_YEAR"
+              ? " от 3 до 6 лет"
+              : vacancy.experience === "WORK_EXPERIENCE_MORE_THAN_6_YEAR"
+                ? " от 6 лет"
+                : " без опыта"
+        }
+         <br>
         <span class="bold-600">Полная занятость<br></span>
         <span class="bold-600">График: </span>5/2<br>
         <span class="bold-600">Рабочие часы: </span>8
@@ -150,9 +160,4 @@ const VACANCY_DESCRIPTIONS = (vacancy) => `
   </article>
   `;
 
-export {
-  VACANCY_CARD_TEMPLATE,
-  MODAL_HEADER_TEMPLATE,
-  FORM_TEMPLATE,
-  VACANCY_DESCRIPTIONS
-};
+export { VACANCY_CARD_TEMPLATE, MODAL_HEADER_TEMPLATE, FORM_TEMPLATE, VACANCY_DESCRIPTIONS };

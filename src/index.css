@@ -204,7 +204,7 @@ button:active {
 }
 
 .main {
-  margin-right: auto;
+  /*margin-right: auto;*/
   display: flex;
   flex-direction: column;
   padding: 40px 80px 0;
@@ -354,10 +354,6 @@ button:active {
   margin: 20px 0 0;
 }
 
-.article__title {
-  margin: auto;
-}
-
 .game-cards {
   margin: auto;
   display: flex;
@@ -432,7 +428,7 @@ button:active {
 }
 
 section {
-  display: none;
+  display: none;  
 }
 
 .active-section {
@@ -725,7 +721,7 @@ input[type="url"] {
 }
 
 .load-vacancy-card {
-  max-width: 712px;
+  max-width: 100%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -868,6 +864,10 @@ dialog[open] {
   width: 24px;
   height: 24px;
   border: 0;
+}
+
+.content{
+  max-width: 1280px;
 }
 
 dialog .modal-greetings-content {
